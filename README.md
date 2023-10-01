@@ -26,7 +26,7 @@ Both during and between games, the commands `+inserisci_inizio` and `+inserisci_
 
 The game can end in two possible way. If the word guessed is the objective word the system prints to standard output ok. Otherwise if the number of guess exceeds the maximum number of tries n the game end with result ko.
 
-For the full explaination and example of how the output is generated given a tried word see [pdf](/docs/Project%20specification%20ENG.pdf) (also available in [Italian](/docs/Project%20specification%20ITA.pdf)).
+For the full explaination and example of how the output is generated given a tried word see [pdf](/docs/Project%20specification%20ENG.pdf) (also available in [Italian](/docs/Project%20specification%20IT.pdf)).
 
 ## Implementation choices
 This project is implemented in C11 using only the [standard C libraries](https://en.wikipedia.org/wiki/C_standard_library).
