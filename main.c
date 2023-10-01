@@ -149,9 +149,6 @@ bool filter (const char *word, int numOfChar, const char *correctPosition) {
     return true;
 }
 
-//Inserisco le parole che prendo dall'input nell'albero e gestisco anche il caso in cui il dizionario
-//di parole da inserire è all'interno del blocco +inserisci_inizio / +inserisci_fine
-
 //Insert the words taken from the input into the tree
 TreeNode* get_dictionary(int numOfChar, TreeNode *root, const char *correctPosition, bool isInsert,
                          InsertNode **insertRoot, bool firstWord) {
@@ -271,7 +268,7 @@ TreeNode *existence(TreeNode *x, char *wordToCheck) {
     return x;
 }
 
-//Controllo quali caratteri non devono esistere nella parola
+//Check what characters don't belong to the word
 void check_non_existing_chars (const char *comparedString, const char *word, int numOfChar) {
     for (int i = 0; i < numOfChar; ++i) {
         if (comparedString[i] == '/') {
@@ -288,11 +285,11 @@ void check_non_existing_chars (const char *comparedString, const char *word, int
     }
 }
 
-//Controllo il numero di occorrenze (minime ed esatte)
+//Check the minimum and exact number of occurrences
 void occurrence_check (const char *comparedString, const char *word, int numOfChar) {
     int countRight[78] = {0};
 
-    //Conto il numero totale di caratteri in posizione scorretta e corretta
+    //Count the total number of characters in incorrect and correct position
     for (int i = 0; i < numOfChar; ++i) {
         int idx = word[i] - '-';
         if (comparedString[i] == '|' || comparedString[i] == '+')
@@ -301,14 +298,14 @@ void occurrence_check (const char *comparedString, const char *word, int numOfCh
 
     int countTot[78] = {0};
 
-    //Conto il numero totale di caratteri
+    //Count the total number of characters
     for (int i = 0; i < numOfChar; ++i) {
         int idx = word[i] - '-';
         countTot[idx]++;
     }
 
-    //Se il numero di caratteri in giusta posizione + il numero di caratteri in posizione
-    //scorretta > occorrenze totali conosco le occorrenze esatte
+    //If the number of characters in the right position + the number of characters in incorrect
+    //position > total occurrences I know the exact occurrences
     for (int i = 0; i < numOfChar; ++i) {
         int c = word[i] - '-';
         if (countRight[c] != 0) {
@@ -325,7 +322,7 @@ void update_non_existing_chars(int c, int idx) {
     constraints[c].constr[idx] = (char) c;
 }
 
-//Aggiorno la stringa che contiene i caratteri che devono esistere senza inserire duplicati
+//Update the string that contains the characters that must exists without insert duplicates
 void update_existing_chars(char c) {
     bool exists = false;
     if (lastExisting == 0) {
@@ -347,7 +344,7 @@ void update_existing_chars(char c) {
     }
 }
 
-//Creo la stringa di output aggiornando i vincoli di esistenza
+//Create the output string by updating the existence constraints
 void compare_strings(char *word, char *wordToFind, char *comparedString, int numOfChar, char *correctPosition) {
     char tmp[numOfChar + 1];
     char tmpToFind[numOfChar + 1];
@@ -389,7 +386,7 @@ void compare_strings(char *word, char *wordToFind, char *comparedString, int num
     strcpy(comparedString, tmp);
 }
 
-//Controllo l'idoneità delle parole iterando sull'albero
+//Check the suitability of words by iterating over the tree
 void check_nodes (TreeNode *node, int numOfChar, char *correctPosition) {
     if (node != NULL) {
         check_nodes(node->left, numOfChar, correctPosition);
@@ -403,7 +400,7 @@ void check_nodes (TreeNode *node, int numOfChar, char *correctPosition) {
     }
 }
 
-//Controllo l'idoneità delle sole parole valide
+//Check the suitability of only valid words
 void check_nodes2 (TreeNode *node, int numOfChar, const char *correctPosition) {
     node = node->nextValid;
     while (node != NULL) {
@@ -417,7 +414,7 @@ void check_nodes2 (TreeNode *node, int numOfChar, const char *correctPosition) {
     lastSeen->nextValid = NULL;
 }
 
-//Inserisco le parole valide del blocco +inserisci_inizio / +inserisci_fine nella pseudo lista
+//Insert the valid words of the block +inserisci_inizio / +inserisci_fine in the pseudo list
 void insert (InsertNode *insertRoot) {
     if (insertRoot != NULL) {
         insert(insertRoot->left);
@@ -435,7 +432,7 @@ void insert (InsertNode *insertRoot) {
     }
 }
 
-//Stampo le parole valide
+//Print valid words
 void inorder_valid (TreeNode *head, int numOfChar) {
     head = head->nextValid;
     while (head != NULL) {
