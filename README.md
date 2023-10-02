@@ -1,5 +1,8 @@
 # API-Project_2022
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![latest commit](https://img.shields.io/github/last-commit/BrescianiLuca/API-Project-2022?color=red)
+
 The development of this project is part of the algorithms and data structures course at the Polytechnic University of Milan, and as a final examination, it is necessary for the bachelor's degree in computer engineering. The course was held by prof. Matteo Pradella, Davide Martinenghi and Alessandro Barenghi in the academic year 2021-2022.<br>
 ***Final score: 30/30 cum laude***
 
